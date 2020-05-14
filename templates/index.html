@@ -1,0 +1,21 @@
+<!-- quiz/templates/index.html -->
+<html>
+  <head>
+    <title>Lista rzeczy do zrobienia - ToDo</title>
+  <!-- dołączamy arkusz CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+
+<body class="bg-light">
+  <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center p-3"><h1 class="text-dark">Strona Główna</h1></div>
+      <div class="col-md-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center p-3"><a href="{{ url_for('zadania') }}" class="text-dark"><button type="submit" class="btn btn-light text-dark"><h3>Lista zadań</h3></button></a></div>
+    <div class="col-md-4"></div>
+  </div>
+</body>
+</html>

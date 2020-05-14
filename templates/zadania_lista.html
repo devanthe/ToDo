@@ -1,0 +1,57 @@
+<!-- todo/templates/zadania_lista.html -->
+<html>
+  <head class="bg-light">
+  <!-- nazwa aplikacji pobrana z ustawień -->
+    <title>{{ config.SITE_NAME }}</title>
+  <!-- dołączamy arkusz CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body class="bg-light">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center">
+        <h1 class="text-dark p-3">{{ config.SITE_NAME }}:</h1>
+        <!-- formularz dodawania zadania -->
+
+        <div class="form-group">
+          <form class="add-form p-2" method="POST" action="{{ url_for('zadania') }}">
+            <input name="zadanie" class="form-control" value=""/>
+            <button type="submit" class="btn btn-light text-dark">Dodaj zadanie</button>
+          </form>
+        </div>
+
+        <!-- informacje o sukcesie lub błędzie -->
+        <p class="text-dark">
+          {% if error %}
+            <strong class="error">Błąd: {{ error }}</strong>
+          {% endif %}
+
+          {% for message in get_flashed_messages() %}
+            <strong class="success">{{ message }}</strong>
+          {% endfor %}
+        </p>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+
+
+    <div class="row h-50 px-5">
+      <div class="col-10">
+        <ol>
+          <!-- wypisujemy kolejno wszystkie zadania -->
+          {% for zadanie in zadania %}
+            <li class="text-dark">{{ zadanie.zadanie }} – <em>{{ zadanie.data_pub }}</em></li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center p-3"><a href="{{ url_for('index') }}" class="text-dark"><button type="submit" class="btn btn-light text-dark"><h3>Strona Główna</h3></button></a></div>
+        <div class="col-md-4"></div>
+    </div>
+
+
+  </body>
+</html>
